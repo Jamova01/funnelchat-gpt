@@ -17,7 +17,7 @@ const AssistantSchema = {
     allowNull: false,
     type: DataTypes.STRING(500),
   },
-  type: {
+  type: { // This field refers to: Support or Sales.
     allowNull: false,
     type: DataTypes.STRING,
   },
@@ -41,6 +41,11 @@ const AssistantSchema = {
   instructions: {
     allowNull: true,
     type: DataTypes.STRING(1500),
+  },
+  fileIds: {
+    allowNull: true,
+    field: "file_ids",
+    type: DataTypes.ARRAY(DataTypes.STRING),
   },
   userId: {
     field: "user_id",
