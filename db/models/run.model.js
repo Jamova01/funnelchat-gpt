@@ -1,4 +1,5 @@
 const { Model, DataTypes, Sequelize } = require("sequelize");
+const { ASSISTANT_TABLE } = require("./assistant.model");
 
 const RUN_TABLE = "runs";
 
@@ -9,9 +10,15 @@ const RunSchema = {
     type: DataTypes.STRING,
   },
   assistantId: {
-    allowNull: false,
-    type: DataTypes.STRING,
     field: "assistant_id",
+    allowNull: true,
+    type: DataTypes.STRING,
+    references: {
+      model: ASSISTANT_TABLE,
+      key: "id"
+    },
+    onUpdate: "CASCADE",
+    onDelete: "CASCADE",
   },
   threadId: {
     allowNull: false,
@@ -93,8 +100,7 @@ const RunSchema = {
 
 class Run extends Model {
   static associate(models) {
-    this.belongsTo(models.Thread, { as: 'thread' });
-    this.hasMany(models.Message, { foreignKey: 'runId', as: 'messages' });
+    this.belongsTo(models.Assistant, { as: 'assistant' });
   }
 
   static config(sequelize) {
