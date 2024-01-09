@@ -1,6 +1,5 @@
 const express = require('express');
 const MessagesService = require("../services/message.service")
-// const validatorHandler = require('../middlewares/validator.handler');
 
 const router = express.Router()
 const service = new MessagesService()
@@ -8,7 +7,6 @@ const service = new MessagesService()
 router.get("/", async (req, res, next) => {
   try {
     const body = req.body
-
     const threadMessages = await service.find(body)
     res.json(threadMessages)
   } catch (error) {
