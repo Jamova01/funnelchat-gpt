@@ -5,8 +5,7 @@ const assistantsRouter = require("./assistants.router")
 const threadsRouter = require("./threads.router")
 const messagesRouter = require("./messages.router")
 const runsRouter = require("./runs.router")
-// const openaiRouter = require("./openai.router")
-// const filesRouter = require("./files.router")
+const filesRouter = require("./files.router")
 
 function routerApi(app) {
   const router = express.Router()
@@ -17,8 +16,7 @@ function routerApi(app) {
   router.use("/threads", threadsRouter)
   router.use("/messages", messagesRouter)
   router.use("/runs", runsRouter)
-  // router.use("/files", filesRouter)
-  // router.use("/openai-request", openaiRouter)
+  router.use("/files", filesRouter)
 }
 
 module.exports = routerApi
