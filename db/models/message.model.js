@@ -1,4 +1,5 @@
 const { Model, DataTypes, Sequelize } = require("sequelize");
+const { THREAD_TABLE } = require("./thread.model");
 
 const MESSAGE_TABLE = "messages";
 
@@ -23,7 +24,13 @@ const MessageSchema = {
   threadId: {
     allowNull: false,
     type: DataTypes.STRING,
-    field: "thread_id"
+    field: "thread_id",
+    references: {
+      model: THREAD_TABLE,
+      key: "id"
+    },
+    onUpdate: "CASCADE",
+    onDelete: "CASCADE",
   },
   fileIds: {
     allowNull: true,
