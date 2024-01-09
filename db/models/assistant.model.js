@@ -77,6 +77,8 @@ class Assistant extends Model {
   static associate(models) {
     this.belongsTo(models.User, { as: "user" })
     this.hasMany(models.Thread, { foreignKey: 'assistantId', as: 'threads' });
+    this.hasMany(models.Run, { foreignKey: 'assistantId', as: 'runs' });
+    this.hasMany(models.File, { foreignKey: 'assistantId', as: 'files' });
   }
 
   static config(sequelize) {
