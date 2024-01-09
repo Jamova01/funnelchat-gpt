@@ -20,6 +20,7 @@ const createAssistantSchema = Joi.object({
     })
   ).max(128).optional(),
   instructions: Joi.string().max(32768).optional(),
+  fileIds: Joi.array().items(Joi.string()),
 });
 
 const updateAssistantSchema = Joi.object({
