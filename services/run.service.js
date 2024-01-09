@@ -16,14 +16,7 @@ class RunsService {
       const runs = await openai.beta.threads.runs.list(
         threadId
       );
-      // const response = await models.Run.findAll({
-      //   where: {
-      //     threadId: threadId
-      //   }
-      // });
-      // return response;
       return runs;
-
     } catch (error) {
       throw boom.badImplementation("Failed to fetch runs", error);
     }
